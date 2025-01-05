@@ -112,7 +112,6 @@ def countPalindromicSubsequence(s: str) -> int:
     return count
 
 
-
 '''
 Janurary 5, 2025
 2381. Shifting Letters II:
@@ -121,7 +120,40 @@ Shifting a character forward means replacing it with the next letter in the alph
 Return the final string after all such shifts to s are applied.
 '''
 def shiftingLetters(s: str, shifts: list[list[int]]) -> str:
-    pass
+    n = len(s)
+    diff_array = [0] * n  # Initialize a difference array with all elements set to 0
+    
+    # Process eahc shift op
+    for shift in shifts:
+        if shift[2] == 1: # shift dir is forward (1)
+            diff_array[shift[0]] += 1 # increment at start index
+            if shift[1] + 1 < n:
+                diff_array[
+                    shift[1] + 1
+                ] -= 1 # Decrement at end+1 index
+        else: # Else the dir is backward
+            diff_array[shift[0]] -= 1 # Decrement at the start index
+            if shift[1] + 1 < n:
+                diff_array[ 
+                    shift[1] + 1
+                ] += 1 # Increment at end+1 index
+
+    result = list(s)
+    number_of_shifts = 0
+    
+    # Apply shifts to string
+    for i in range(n):
+        number_of_shifts = (number_of_shifts + diff_array[i]) % 26
+        if number_of_shifts < 0:
+            number_of_shifts += 26 # ensure non-neg shifts
+
+        # Calculate the new character by shifting `s[i]`
+        shifted_char = chr(
+            (ord(s[i]) - ord("a") + number_of_shifts) % 26 + ord("a")
+        )
+        result[i] = shifted_char
+
+    return "".join(result)
 
 
 def main():
