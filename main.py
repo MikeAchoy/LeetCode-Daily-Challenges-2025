@@ -1,5 +1,4 @@
 
-
 '''
 First problem of the year, January 1, 2025
 1422. Maximum Score After Splitting a String:
@@ -8,8 +7,6 @@ Given a string s of zeros and ones, return the maximum score after splitting the
 
 The score after splitting a string is the number of zeros in the left substring plus the number of ones in the right substring.
 '''
-
-
 def maxScore(s: str) -> int:
     max_score = 0
     # Iterate through the string, not splitting at last char 
@@ -113,6 +110,18 @@ def countPalindromicSubsequence(s: str) -> int:
         count += len(between)
 
     return count
+
+
+
+'''
+Janurary 5, 2025
+2381. Shifting Letters II:
+You are given a string s of lowercase English letters and a 2D integer array shifts where shifts[i] = [starti, endi, directioni]. For every i, shift the characters in s from the index starti to the index endi (inclusive) forward if directioni = 1, or shift the characters backward if directioni = 0.
+Shifting a character forward means replacing it with the next letter in the alphabet (wrapping around so that 'z' becomes 'a'). Similarly, shifting a character backward means replacing it with the previous letter in the alphabet (wrapping around so that 'a' becomes 'z').
+Return the final string after all such shifts to s are applied.
+'''
+def shiftingLetters(s: str, shifts: list[list[int]]) -> str:
+    pass
 
 
 def main():
