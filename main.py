@@ -156,6 +156,27 @@ def shiftingLetters(s: str, shifts: list[list[int]]) -> str:
     return "".join(result)
 
 
+'''
+Janurary 6, 2025
+1769. Minimun number of Operations to Move All Balls to Each Box:
+You have n boxes. You are given a binary string boxes of length n, where boxes[i] is '0' if the ith box is empty, and '1' if it contains one ball.
+
+In one operation, you can move one ball from a box to an adjacent box. Box i is adjacent to box j if abs(i - j) == 1. Note that after doing so, there may be more than one ball in some boxes.
+
+Return an array answer of size n, where answer[i] is the minimum number of operations needed to move all the balls to the ith box.
+
+Each answer[i] is calculated considering the initial state of the boxes.
+'''
+def minOperations(boxes: str) -> list[int]:
+    answer = [0] * len(boxes)
+    for current_box in range(len(boxes)):
+        # If the current box contains a ball, calculate the number of moves for every box.
+        if boxes[current_box] == "1":
+            for new_position in range(len(boxes)):
+                answer[new_position] += abs(new_position - current_box)
+    return answer
+
+
 def main():
     pass
 
