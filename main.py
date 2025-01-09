@@ -178,6 +178,28 @@ def minOperations(boxes: str) -> list[int]:
 
 
 '''
+January 6. 2025
+1408. String Marching in an Array:
+Given an array of string words, return all strings in words that is a substring of another word. You can return the answer in any order.
+A substring is a contiguous sequence of characters within a string
+'''
+def stringMatching(words: list[str]) -> list[str]:
+    matching_words = []
+
+    # Iterate through each word in the input list.
+    for current_word_index in range(len(words)):
+        # Compare the current word with all other words.
+        for other_word_index in range(len(words)):
+            # Skip comparing the word with itself.
+            if current_word_index == other_word_index:
+                continue
+            if words[current_word_index] in words[other_word_index]:
+                # Add it to the result list if true.
+                matching_words.append(words[current_word_index])
+                break  # No need to check further for this word.
+    return matching_words
+
+'''
 January 9, 2025
 2185. Counting Words With a Given Prefix
 You are given an array of strings words and a string pref.
@@ -195,6 +217,8 @@ def prefixCount(words: list[str], pref: str) -> int:
     # One liner solution:
     # return sum(word.startswith(pref) for word in words)
     return count
+
+
 
 
 def main():
