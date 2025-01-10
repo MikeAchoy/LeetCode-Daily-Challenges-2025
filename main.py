@@ -199,8 +199,32 @@ def stringMatching(words: list[str]) -> list[str]:
                 break  # No need to check further for this word.
     return matching_words
 
+'''
+January 9, 2025
+2185. Counting Words With a Given Prefix
+You are given an array of strings words and a string pref.
+Return the number of strings in words that contain pref as a prefix.
+A prefix of a string s is any leading contiguous substring of s.
+'''
+def prefixCount(words: list[str], pref: str) -> int:
+    count = 0
+    # Go through each word
+    for word in words:
+        # Check if it has the prefix
+        if word[:len(pref)] == pref:
+            # Increase count if it does
+            count += 1
+    # One liner solution:
+    # return sum(word.startswith(pref) for word in words)
+    return count
+
+
+
 
 def main():
+    words = ["pay","attention","practice","attend"] 
+    pref = "at"
+    print(prefixCount(words, pref))
     pass
 
 
