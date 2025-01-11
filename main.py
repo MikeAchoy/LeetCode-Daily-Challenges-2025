@@ -199,6 +199,19 @@ def stringMatching(words: list[str]) -> list[str]:
                 break  # No need to check further for this word.
     return matching_words
 
+
+'''
+January 7, 2025
+
+'''
+
+
+'''
+January 8, 2025
+
+'''
+
+
 '''
 January 9, 2025
 2185. Counting Words With a Given Prefix
@@ -219,6 +232,17 @@ def prefixCount(words: list[str], pref: str) -> int:
     return count
 
 
+'''
+January 10, 2025
+
+'''
+
+
+
+'''
+January 11, 2025
+
+'''
 
 
 def main():
