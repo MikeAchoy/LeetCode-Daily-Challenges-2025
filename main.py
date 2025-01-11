@@ -312,9 +312,6 @@ def canConstruct(s: str, k: int) -> bool:
 
 
 def main():
-    words = ["pay","attention","practice","attend"] 
-    pref = "at"
-    print(prefixCount(words, pref))
     pass
 
 
