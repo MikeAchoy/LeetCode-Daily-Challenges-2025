@@ -269,6 +269,7 @@ def wordsSubsets(words1: list[str], words2: list[str]) -> list[str]:
         return ans
 
     bmax = [0] * 26
+
     for b in words2:
         for i, c in enumerate(count(b)):
             bmax[i] = max(bmax[i], c)
@@ -282,8 +283,32 @@ def wordsSubsets(words1: list[str], words2: list[str]) -> list[str]:
 
 '''
 January 11, 2025
-
+1400. Construct K Palindrome Strings
+Given a string s and an integer k, return true if you can use all the characters in s to construct k palindrome strings or false otherwise.
 '''
+def canConstruct(s: str, k: int) -> bool:
+    # Handle edge cases
+    if len(s) < k:
+        return False
+
+    if len(s) == k:
+        return True
+
+    # Initialize frequency dictionary and odd_count
+    freq = [0] * 26
+    odd_count = 0
+
+    # Increment the value of the index corresponding to the current character
+    for char in s:
+        freq[ord(char) - ord("a")] += 1
+
+    # Count the number of characters that appear an odd number of times in s
+    for count in freq:
+        if count % 2 == 1:
+            odd_count += 1
+
+    # Return if the number of odd frequencies is less than or equal to k
+    return odd_count <= k
 
 
 def main():
