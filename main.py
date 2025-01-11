@@ -178,7 +178,7 @@ def minOperations(boxes: str) -> list[int]:
 
 
 '''
-January 6. 2025
+January 7. 2025
 1408. String Marching in an Array:
 Given an array of string words, return all strings in words that is a substring of another word. You can return the answer in any order.
 A substring is a contiguous sequence of characters within a string
