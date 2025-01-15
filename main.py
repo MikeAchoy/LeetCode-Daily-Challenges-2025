@@ -390,6 +390,38 @@ def minimumLength(s: str) -> int:
 
 
 '''
+January 14, 2025
+2657. Find the Prefix Common Array of Two Array:
+You are given two 0-indexed integer permutations A and B of length n.
+A prefix common array of A and B is an array C such that C[i] is equal to the count of numbers that are present at or before the index i in both A and B.
+Return the prefix common array of A and B.
+A sequence of n integers is called a permutation if it contains all integers from 1 to n exactly once.
+'''
+def findThePrefixCommonArray(A: list[int], B: list[int]) -> list[int]:
+    n = len(A)
+    prefix_common_array = [0] * n
+
+    # Loop through each index to calculate common elements for each prefix
+    for current_index in range(n):
+        common_count = 0
+
+        # Compare elements in A and B within the range of current prefix
+        for a_index in range(current_index + 1):
+            for b_index in range(current_index + 1):
+
+                # Check if elements match, and count if they do
+                if A[a_index] == B[b_index]:
+                    common_count += 1
+                    break  # Prevent counting duplicates
+
+        # Store the count of common elements for the current prefix
+        prefix_common_array[current_index] = common_count
+
+    # Return the final list with counts of common elements in each prefix
+    return prefix_common_array
+
+
+'''
 January 15, 2025
 2429. Minimize XOR:
 Given two positive integers num1 and num2, find the positive integer x such that:
