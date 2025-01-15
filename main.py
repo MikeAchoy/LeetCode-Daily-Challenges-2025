@@ -88,7 +88,7 @@ def waysToSplitArray(nums: list[int]) -> int:
     return count
 
 '''
-Janurary 4, 2025
+January 4, 2025
 1930. Unique Length-3 Palindromic Subsequences:
 Given a string s, return the number of unique palindromes of length three that are a subsequence of s.
 Note that even if there are multiple ways to obtain the same subsequence, it is still only counted once.
@@ -116,7 +116,7 @@ def countPalindromicSubsequence(s: str) -> int:
 
 
 '''
-Janurary 5, 2025
+January 5, 2025
 2381. Shifting Letters II:
 You are given a string s of lowercase English letters and a 2D integer array shifts where shifts[i] = [starti, endi, directioni]. For every i, shift the characters in s from the index starti to the index endi (inclusive) forward if directioni = 1, or shift the characters backward if directioni = 0.
 Shifting a character forward means replacing it with the next letter in the alphabet (wrapping around so that 'z' becomes 'a'). Similarly, shifting a character backward means replacing it with the previous letter in the alphabet (wrapping around so that 'a' becomes 'z').
@@ -160,7 +160,7 @@ def shiftingLetters(s: str, shifts: list[list[int]]) -> str:
 
 
 '''
-Janurary 6, 2025
+January 6, 2025
 1769. Minimun number of Operations to Move All Balls to Each Box:
 You have n boxes. You are given a binary string boxes of length n, where boxes[i] is '0' if the ith box is empty, and '1' if it contains one ball.
 
