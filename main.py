@@ -7,9 +7,6 @@ Given a string s of zeros and ones, return the maximum score after splitting the
 
 The score after splitting a string is the number of zeros in the left substring plus the number of ones in the right substring.
 '''
-from _typeshed import SupportsItems
-
-
 def maxScore(s: str) -> int:
     max_score = 0
     # Iterate through the string, not splitting at last char 
@@ -371,6 +368,8 @@ Delete the closest character to the left of index i that is equal to s[i].
 Delete the closest character to the right of index i that is equal to s[i].
 Return the minimum length of the final string s that you can achieve.
 '''
+from collections import Counter
+
 def minimumLength(s: str) -> int:
     # Step 1: Count the frequency of each character in the string
     char_frequency_map = Counter(s)
