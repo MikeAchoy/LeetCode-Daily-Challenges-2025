@@ -520,9 +520,64 @@ def doesValidArrayExist(derived: list[int]) -> bool:
 
 '''
 January 18, 2025
+1368. Minimum Cost to Make at Least One Valid Path in a Grid:
+Given an m x n grid. Each cell of the grid has a sign pointing to the next cell you should visit if you are currently in this cell. The sign of grid[i][j] can be:
 
+1 which means go to the cell to the right. (i.e go from grid[i][j] to grid[i][j + 1])
+2 which means go to the cell to the left. (i.e go from grid[i][j] to grid[i][j - 1])
+3 which means go to the lower cell. (i.e go from grid[i][j] to grid[i + 1][j])
+4 which means go to the upper cell. (i.e go from grid[i][j] to grid[i - 1][j])
+Notice that there could be some signs on the cells of the grid that point outside the grid.
+
+You will initially start at the upper left cell (0, 0). A valid path in the grid is a path that starts from the upper left cell (0, 0) and ends at the bottom-right cell (m - 1, n - 1) following the signs on the grid. The valid path does not have to be the shortest.
+
+You can modify the sign on a cell with cost = 1. You can modify the sign on a cell one time only.
+
+Return the minimum cost to make the grid have at least one valid path.
 '''
+import collections
+# Direction vectors: right, left, down, up (matching grid values 1,2,3,4)
+_dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
+# Check if coordinates are within grid bounds
+def _is_valid(
+    row: int, col: int, num_rows: int, num_cols: int
+) -> bool:
+    return 0 <= row < num_rows and 0 <= col < num_cols
+
+def minCost(grid: list[list[int]]) -> int:
+    num_rows, num_cols = len(grid), len(grid[0])
+
+    # Track minimum cost to reach each cell
+    min_cost = [[float("inf")] * num_cols for _ in range(num_rows)]
+    min_cost[0][0] = 0
+
+    # Use deque for 0-1 BFS - add zero cost moves to front, cost=1 to back
+    deque = collections.deque([(0, 0)])
+
+    while deque:
+        row, col = deque.popleft()
+
+        # Try all four directions
+        for dir_idx, (dx, dy) in enumerate(_dirs):
+            new_row, new_col = row + dx, col + dy
+            cost = 0 if grid[row][col] == dir_idx + 1 else 1
+
+                # If position is valid and we found a better path
+            if (
+                _is_valid(new_row, new_col, num_rows, num_cols)
+                and min_cost[row][col] + cost < min_cost[new_row][new_col]
+            ):
+
+                min_cost[new_row][new_col] = min_cost[row][col] + cost
+
+                # Add to back if cost=1, front if cost=0
+                if cost == 1:
+                    deque.append((new_row, new_col))
+                else:
+                    deque.appendleft((new_row, new_col))
+
+    return int(min_cost[num_rows - 1][num_cols - 1])
 
 
 def main():
